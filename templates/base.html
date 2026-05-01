@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Decrypt Hash{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <a href="#" class="nav-button">Acceuil</a>
+            <a href="#" class="nav-button">List Wallet</a>
+            <a href="#" class="nav-button">Submit Earn</a>
+            <a href="#" class="nav-button">Earned Confirmed</a>
+            <a href="#" class="nav-button">Buy Wallet</a>
+            <a href="#" class="nav-button">List Hash</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
