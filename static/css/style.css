@@ -2,6 +2,7 @@
     --azure-green: #7fffd4;
     --text-dark: #000000;
     --bg-light: #f6f8fb;
+    --panel-blue: #1f4f9f;
 }
 
 * {
@@ -48,7 +49,24 @@ main {
 }
 
 .hero {
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
     text-align: center;
+}
+
+.hero-panel {
+    background: var(--panel-blue);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    line-height: 1.6;
+}
+
+.hero-panel h1 {
+    margin-top: 0;
+}
+
+.hero-footer {
+    margin-top: 18px;
+    font-weight: 700;
 }
