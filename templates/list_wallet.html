@@ -9,7 +9,7 @@
         <h3>{{ wallet.btc_address }}</h3>
         <p class="balance">{{ wallet.balance }}</p>
         <button class="hash-button" type="button" onclick="copyHash('{{ wallet.hash_value }}', this)">Hash</button>
-        <span class="copy-toast" role="status" aria-live="polite">Hash copié</span>
+        <span class="copy-toast" role="status" aria-live="polite" hidden>Hash copié</span>
     </article>
     {% else %}
     <p>Aucun wallet disponible pour le moment.</p>
@@ -23,10 +23,12 @@ function copyHash(value, button) {
     const card = button.closest('.wallet-card');
     const toast = card.querySelector('.copy-toast');
 
+    toast.hidden = false;
     toast.classList.add('show');
     clearTimeout(toast._timeoutId);
     toast._timeoutId = setTimeout(() => {
         toast.classList.remove('show');
+        toast.hidden = true;
     }, 1400);
 }
 </script>
