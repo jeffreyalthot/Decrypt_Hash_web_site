@@ -13,10 +13,19 @@ def init_db():
         CREATE TABLE IF NOT EXISTS wallets (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             btc_address TEXT NOT NULL UNIQUE,
-            hash_value TEXT NOT NULL
+            hash_value TEXT NOT NULL,
+            balance_satoshis INTEGER DEFAULT 0,
+            balance_updated_at TEXT
         )
         '''
     )
+    columns = {
+        row[1] for row in conn.execute('PRAGMA table_info(wallets)').fetchall()
+    }
+    if 'balance_satoshis' not in columns:
+        conn.execute('ALTER TABLE wallets ADD COLUMN balance_satoshis INTEGER DEFAULT 0')
+    if 'balance_updated_at' not in columns:
+        conn.execute('ALTER TABLE wallets ADD COLUMN balance_updated_at TEXT')
     conn.commit()
     conn.close()
 
