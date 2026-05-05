@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}List Wallet - Decrypt Hash{% endblock %}
+
+{% block content %}
+<section class="wallet-grid">
+    {% for wallet in wallets %}
+    <article class="wallet-card">
+        <h3>{{ wallet.btc_address }}</h3>
+        <p class="balance">{{ wallet.balance }}</p>
+        <button class="hash-button" type="button" onclick="copyHash('{{ wallet.hash_value }}')">Hash</button>
+    </article>
+    {% else %}
+    <p>Aucun wallet disponible pour le moment.</p>
+    {% endfor %}
+</section>
+
+<script>
+function copyHash(value) {
+    navigator.clipboard.writeText(value);
+}
+</script>
+{% endblock %}
