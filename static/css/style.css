@@ -84,7 +84,29 @@ main {
     border-radius: 12px;
     padding: 16px;
     border: 1px solid #dde2ea;
+    position: relative;
 }
+
+.copy-toast {
+    position: absolute;
+    right: 16px;
+    bottom: 56px;
+    background: #1f4f9f;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.copy-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .wallet-card h3 {
     margin-top: 0;
