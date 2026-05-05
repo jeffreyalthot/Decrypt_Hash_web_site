@@ -70,3 +70,62 @@ main {
     margin-top: 18px;
     font-weight: 700;
 }
+
+.wallet-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.wallet-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #dde2ea;
+}
+
+.wallet-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+}
+
+.balance {
+    font-weight: 700;
+    color: #1f4f9f;
+}
+
+.hash-button,
+.submit-button {
+    border: none;
+    border-radius: 10px;
+    background: var(--azure-green);
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.submit-panel {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #dde2ea;
+}
+
+.submit-form input,
+.submit-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccd4df;
+}

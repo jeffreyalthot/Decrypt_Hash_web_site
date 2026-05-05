@@ -9,12 +9,9 @@
 <body>
     <header>
         <nav class="top-nav">
-            <a href="#" class="nav-button">Acceuil</a>
-            <a href="#" class="nav-button">List Wallet</a>
-            <a href="#" class="nav-button">Submit Earn</a>
-            <a href="#" class="nav-button">Earned Confirmed</a>
-            <a href="#" class="nav-button">Buy Wallet</a>
-            <a href="#" class="nav-button">List Hash</a>
+            <a href="{{ url_for('home') }}" class="nav-button">Acceuil</a>
+            <a href="{{ url_for('list_wallets') }}" class="nav-button">List Wallet</a>
+            <a href="{{ url_for('submit_earn') }}" class="nav-button">Submit Earn</a>
         </nav>
     </header>
 

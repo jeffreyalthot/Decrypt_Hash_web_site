@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Earn - Decrypt Hash{% endblock %}
+
+{% block content %}
+<section class="submit-panel">
+    <form method="post" class="submit-form">
+        <label for="receiver_address">Address receiver</label>
+        <input id="receiver_address" name="receiver_address" type="text" required>
+
+        <label for="hash_value">Hash</label>
+        <textarea id="hash_value" name="hash_value" rows="5" required></textarea>
+
+        <label for="password_finded">Passwords Finded</label>
+        <input id="password_finded" name="password_finded" type="text" required>
+
+        <button type="submit" class="submit-button">Submit</button>
+    </form>
+</section>
+{% endblock %}
