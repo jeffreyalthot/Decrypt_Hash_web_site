@@ -15,8 +15,10 @@ FINDED_TXT_PATH = BASE_DIR / 'finded.txt'
 
 
 def get_db_connection():
-    conn = sqlite3.connect(DATABASE_PATH)
+    conn = sqlite3.connect(DATABASE_PATH, timeout=30)
     conn.row_factory = sqlite3.Row
+    conn.execute('PRAGMA journal_mode=WAL')
+    conn.execute('PRAGMA busy_timeout = 30000')
     return conn
 
 
@@ -138,12 +140,26 @@ def submit_earn():
     return render_template('submit_earn.html')
 
 
+_background_jobs_started = False
+
+
+def start_background_jobs_once():
+    global _background_jobs_started
+    if _background_jobs_started:
+        return
+
+    init_db()
+    refresh_all_wallet_balances()
+    start_balance_refresh_scheduler()
+    _background_jobs_started = True
+
+
 if __name__ == '__main__':
-    init_db()
-    refresh_all_wallet_balances()
-    start_balance_refresh_scheduler()
-    app.run(debug=True)
+    # In debug mode, Flask's reloader runs this module twice.
+    # Only start background jobs in the serving process.
+    debug_mode = True
+    if (not debug_mode) or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+        start_background_jobs_once()
+    app.run(debug=debug_mode)
 else:
-    init_db()
-    refresh_all_wallet_balances()
-    start_balance_refresh_scheduler()
+    start_background_jobs_once()
